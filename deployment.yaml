@@ -1,20 +1,7 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: demo-app
-  namespace: default
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: demo-app
   template:
-    metadata:
-      labels:
-        app: demo-app
     spec:
       containers:
-        - name: app
-          image: nginx:this-image-does-not-exist
-          ports:
-            - containerPort: 80
+      - name: app
+        image: busybox:1.36
+        command: ["sh", "-c", "echo 'Application running'; sleep 3600"]
