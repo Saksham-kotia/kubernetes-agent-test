@@ -1,20 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-app
+  name: oom-test
   namespace: default
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: demo-app
   template:
-    metadata:
-      labels:
-        app: demo-app
     spec:
       containers:
-        - name: app
-          image: nginx:this-image-does-not-exist
-          ports:
-            - containerPort: 80
+      - name: app
+        image: docker.io/library/python:3.12-alpine
+        resources:
+          limits:
+            memory: "256Mi"
+          requests:
+            memory: "128Mi"
