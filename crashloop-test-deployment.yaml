@@ -1,0 +1,7 @@
+spec:
+  template:
+    spec:
+      containers:
+      - name: app
+        image: "docker.io/library/busybox:1.36"
+        command: ["sh", "-c", "echo 'Application running'; sleep 3600"]
